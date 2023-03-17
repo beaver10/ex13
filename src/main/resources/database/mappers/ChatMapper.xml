@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.cwl.chat.ChatDAO">
+ 	<select id="getChatList" resultType="ChatDTO" parameterType="ChatDTO">
+ 		SELECT C.* 
+ 		FROM CHAT C 
+ 		FULL OUTER JOIN MEMBER M
+ 		ON (M.MEMBERID = C.SENDER)
+ 		WHERE M.MEMBERID = C.SENDER
+ 	</select>
+ 	
+ 	<insert id="setChatAdd" parameterType="ChatDTO">
+ 		INSERT INTO CHAT (CHATNUM ,SENDER, MESSAGE)
+ 		VALUES (CHAT_SEQ.NEXTVAL , #{sender}, #{message})
+ 	</insert>
+
+</mapper>
