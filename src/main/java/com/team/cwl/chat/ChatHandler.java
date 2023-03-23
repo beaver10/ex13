@@ -24,7 +24,7 @@ public class ChatHandler extends TextWebSocketHandler{
 	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		System.out.println( session.getId());
+		System.out.println("연결종료 :" + session.getId());
 		sessionList.remove(session);
 		super.afterConnectionClosed(session, status);
 	}
@@ -34,9 +34,9 @@ public class ChatHandler extends TextWebSocketHandler{
 		String strMessage=message.getPayload();
 		System.out.println( strMessage);
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String strDate = sdf.format(new Date());
-		strMessage += "|" + strDate;
+//		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		String strDate = sdf.format(new Date());
+//		strMessage += "|" + strDate;
 		
 		for(WebSocketSession webSocketSession:sessionList){
 			webSocketSession.sendMessage(new TextMessage(strMessage));
