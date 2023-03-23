@@ -3,7 +3,9 @@ package com.team.cwl.chat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
@@ -13,13 +15,18 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 public class ChatHandler extends TextWebSocketHandler{
 	List<WebSocketSession> sessionList=new ArrayList<>();
+	List <WebSocketSession> my = new ArrayList<WebSocketSession>();
+	Map<String, WebSocketSession> map = new HashMap<String, WebSocketSession>();
+	Map<String, List<WebSocketSession>> maps = new HashMap<String, List<WebSocketSession>>();
+	
+	
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		System.out.println("연결됨 : " + session.getId());
+		System.out.println("연결됨 : " + session);
 		sessionList.add(session);
 		System.out.println( sessionList.size());
-		super.afterConnectionEstablished(session);
+		
 	}
 	
 	@Override
@@ -42,5 +49,9 @@ public class ChatHandler extends TextWebSocketHandler{
 			webSocketSession.sendMessage(new TextMessage(strMessage));
 		}
 		super.handleTextMessage(session, message);
+	}
+	
+	public void myMethod() {
+		
 	}
 }

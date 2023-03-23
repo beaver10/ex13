@@ -19,6 +19,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public String chat() {
+		member
 		return "chat";
 	}
 	

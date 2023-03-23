@@ -3,7 +3,7 @@
 
 <html>
 <head>
-	<title>학사관리</title>
+	<title>채팅 </title>
 	<link rel="stylesheet" href="/resources/home.css"/>
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script> 
